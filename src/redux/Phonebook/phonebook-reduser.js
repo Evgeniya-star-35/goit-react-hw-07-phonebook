@@ -1,46 +1,43 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import actions from './phonebook-actions';
-import initialContacts from '../../contacts.json';
-// import { SUBMIT, DELETE, CHANGE_FILTER } from './phonebook-types';
-
-// const contacts = (state = initialContacts, { type, payload }) => {
-//   switch (type) {
-//     case SUBMIT:
-//       console.log(type, payload);
-//       return state.some(
-//         el => el.name.toLowerCase() === payload.name.toLowerCase(),
-//       )
-//         ? alert(`${payload.name} is already in the directory.`)
-//         : [...state, payload];
-
-//     case DELETE:
-//       return state.filter(({ id }) => id !== payload);
-
-//     default:
-//       return state;
-//   }
-// };
-// const filter = (state = '', { type, payload }) => {
-//   switch (type) {
-//     case CHANGE_FILTER:
-//       return payload;
-
-//     default:
-//       return state;
-//   }
-// };
+// import initialContacts from '../../contacts.json';
+import {
+  fetchContactRequest,
+  fetchContactSuccess,
+  fetchContactError,
+  addContactRequest,
+  addContactSuccess,
+  addContactError,
+  deleteContactRequest,
+  deleteContactSuccess,
+  deleteContactError,
+  changeFilter,
+} from './phonebook-actions';
 
 //reduxjs/Toolkit
 
-const contactItems = createReducer(initialContacts, {
-  [actions.addContact]: (state, { payload }) => [...state, payload],
-  [actions.deleteContact]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload),
+const contactItems = createReducer([], {
+  [fetchContactSuccess]: (state, action) => action.payload,
+  [addContactSuccess]: (state, action) => [...state, action.payload],
+  [deleteContactSuccess]: (state, action) =>
+    state.filter(contact => contact.id !== action.payload),
 });
 
 const filter = createReducer('', {
-  [actions.changeFilter]: (_, { payload }) => payload,
+  [changeFilter]: (state, action) => action.payload.filter,
+});
+const loading = createReducer(false, {
+  [fetchContactRequest]: () => true,
+  [fetchContactSuccess]: () => false,
+  [fetchContactError]: () => false,
+
+  [addContactRequest]: () => true,
+  [addContactSuccess]: () => false,
+  [addContactError]: () => false,
+
+  [deleteContactRequest]: () => true,
+  [deleteContactSuccess]: () => false,
+  [deleteContactError]: () => false,
 });
 
-export default combineReducers({ contactItems, filter });
+export default combineReducers({ contactItems, filter, loading });

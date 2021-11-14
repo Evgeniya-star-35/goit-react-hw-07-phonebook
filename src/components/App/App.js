@@ -5,8 +5,7 @@ import Filter from '../Filter';
 import ContactList from '../ContactsList';
 // import actions from '../../redux/Phonebook/phonebook-actions';
 import s from './App.module.css';
-import { fetchContacts } from '../../redux/Phonebook/phonebook-operations';
-console.log(fetchContacts());
+
 function App() {
   return (
     <Container>

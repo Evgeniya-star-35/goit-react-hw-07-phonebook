@@ -1,15 +1,19 @@
-// import PropTypes from 'prop-types';
-// import { useEffect } from 'react';
-
 import Contact from '../Contact';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFiltredContacts } from '../../redux/Phonebook/phonebook-selectors';
-import { deleteContact } from '../../redux/Phonebook/phonebook-operations';
+import {
+  fetchContacts,
+  deleteContact,
+} from '../../redux/Phonebook/phonebook-operations';
 import s from './ContactsList.module.css';
 
 export default function ContactsList() {
   const contacts = useSelector(getFiltredContacts);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <ul>

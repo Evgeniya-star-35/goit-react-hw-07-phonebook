@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+// import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from '../../redux/Phonebook/phonebook-selectors';
-import actions from '../../redux/Phonebook/phonebook-actions';
+import { addContact } from '../../redux/Phonebook/phonebook-operations';
 import s from './Form.module.css';
 // import PropTypes from 'prop-types';
 
@@ -34,7 +35,12 @@ export default function Form() {
       reset();
       return alert(`${name} is already in the directory`);
     }
-    dispatch(actions.addContact({ name, number }));
+    // const contact = {
+    //   id: uuidv4(),
+    //   name,
+    //   number,
+    // };
+    dispatch(addContact({ name, number }));
     reset();
   };
 
