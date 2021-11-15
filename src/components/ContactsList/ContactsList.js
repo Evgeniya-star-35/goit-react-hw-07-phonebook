@@ -11,6 +11,7 @@ import s from './ContactsList.module.css';
 export default function ContactsList() {
   const contacts = useSelector(getFiltredContacts);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
@@ -32,11 +33,3 @@ export default function ContactsList() {
     </ul>
   );
 }
-// ContactsList.propTypes = {
-//   contacts: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.string.isRequired,
-//     }),
-//   ),
-//   onDeleteContact: PropTypes.func.isRequired,
-// };

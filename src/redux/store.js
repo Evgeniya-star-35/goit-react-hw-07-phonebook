@@ -1,5 +1,3 @@
-// import { createStore, combineReducers } from 'redux';
-// import { composeWithDevTools } from 'redux-devtools-extension';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import {
@@ -12,17 +10,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import phonebookReducer from './Phonebook/phonebook-reduser';
-
-// const rootReducer = combineReducers({
-//   phonebook: phonebookReducer,
-// });
-// const store = createStore(rootReducer, composeWithDevTools());
-
-//хранилище с toolkit
-
-// const rootReducer = combineReducers({ phonebook: phonebookReducer });
-// const persistedReducer = persistReducer(contactsPersistConfig, rootReducer);
+import phoneBookReducer from './Phonebook/phonebook-reduser';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -35,7 +23,7 @@ const middleware = [
 
 export const store = configureStore({
   reducer: {
-    contacts: phonebookReducer,
+    phoneBook: phoneBookReducer,
   },
   devTools: process.env.NODE_ENV === 'development',
   middleware,
