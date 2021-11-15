@@ -10,7 +10,9 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import phoneBookReducer from './Phonebook/phonebook-reduser';
+import { filterReducer } from './Phonebook/filter-reducer';
+import contactsSlice from './Phonebook/phonebook-reduser';
+// import phoneBookReducer from './Phonebook/phonebook-reduser';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -23,7 +25,8 @@ const middleware = [
 
 export const store = configureStore({
   reducer: {
-    phoneBook: phoneBookReducer,
+    phoneBook: contactsSlice,
+    filter: filterReducer,
   },
   devTools: process.env.NODE_ENV === 'development',
   middleware,
