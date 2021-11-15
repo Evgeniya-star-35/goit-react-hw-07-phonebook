@@ -55,7 +55,7 @@ const contactsSlice = createSlice({
     [addContact.fulfilled]: (state, action) => ({
       ...state,
       contactItems: [...state.contactItems, action.payload],
-      isLoading: false,
+      loading: false,
     }),
     [addContact.pending]: state => ({
       ...state,
@@ -83,7 +83,5 @@ const contactsSlice = createSlice({
     }),
   },
 });
-// const filter = createReducer('', {
-//   [changeFilter]: (_, { payload }) => payload,
-// });
+
 export default contactsSlice.reducer;
