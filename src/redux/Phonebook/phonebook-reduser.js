@@ -22,7 +22,7 @@ const contactItems = createReducer(initialState.contacts, {
 });
 
 const filter = createReducer(initialState.filter, {
-  [changeFilter]: (_, action) => action.payload.filter,
+  [changeFilter]: (_, { payload }) => payload,
 });
 const loading = createReducer(initialState.loading, {
   [fetchContacts.pending]: () => true,

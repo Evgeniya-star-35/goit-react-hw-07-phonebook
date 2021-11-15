@@ -18,9 +18,9 @@ export default function ContactsList() {
 
   return (
     <ul>
-      {contacts.map(({ name, number, id }) => (
+      {contacts.map(({ name, phone, id }) => (
         <li className={s.item} key={id}>
-          <Contact name={name} number={number} />
+          <Contact name={name} number={phone} />
           <button
             className={s.button}
             type="button"
