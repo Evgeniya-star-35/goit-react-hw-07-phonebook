@@ -10,10 +10,6 @@ export const getFilter = state => state.filter;
 //   );
 //   return filteredContacts;
 // };
-// const getFilterToLowerCase = createSelector(getFilter, filter => {
-//   const filterToLowerCase = filter.toLowerCase();
-//   return filterToLowerCase;
-// });
 
 export const getFiltredContacts = createSelector(
   getContacts,
