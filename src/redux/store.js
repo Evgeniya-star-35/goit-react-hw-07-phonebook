@@ -12,7 +12,6 @@ import {
 } from 'redux-persist';
 import { filterReducer } from './Phonebook/filter-reducer';
 import contactsSlice from './Phonebook/phonebook-reduser';
-// import phoneBookReducer from './Phonebook/phonebook-reduser';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -31,6 +30,5 @@ export const store = configureStore({
   devTools: process.env.NODE_ENV === 'development',
   middleware,
 });
-
 // export const persistor = persistStore(store);
 export default store;

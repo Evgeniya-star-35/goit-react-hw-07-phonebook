@@ -7,6 +7,8 @@ import s from './Filter.module.css';
 
 export default function Filter() {
   const filter = useSelector(getFilter);
+  console.log(filter);
+
   const dispatch = useDispatch();
   const onChangeInput = e => {
     dispatch(changeFilter(e.currentTarget.value));
