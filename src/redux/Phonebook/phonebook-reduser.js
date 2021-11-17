@@ -1,7 +1,6 @@
 // import { createReducer } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-// import { combineReducers } from 'redux';
-// import { changeFilter } from './phonebook-actions';
+
 import {
   fetchContacts,
   addContact,
