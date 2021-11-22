@@ -35,11 +35,7 @@ export default function Form() {
       reset();
       return alert(`${name} is already in the directory`);
     }
-    // const contact = {
-    //   id: uuidv4(),
-    //   name,
-    //   number,
-    // };
+
     dispatch(addContact({ name, phone }));
     reset();
   };
